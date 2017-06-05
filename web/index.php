@@ -54,15 +54,16 @@ $app->get('/', function() use($app) {
 
     if(count($names) == 0) {
         //No results of names
-        $page .= '\n    <p>No results found from query</p>';
+        $page .= "\n    <p>No results found from query</p>";
     }
     else {
+        $page .= "<h3>Query results:</h3>";
         foreach($names as $n) {
             $page .= "\n    <p>$n</p>";
         }
     }
 
-    $page .= '\n</body>\n</html>';
+    $page .= "\n</body>\n</html>";
     return $page;
     //return $app['twig']->render($str);  //Original return statement
 });
