@@ -34,18 +34,36 @@ $app->register(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider
 
 $app->get('/', function() use($app) {
     $app['monolog']->addDebug('logging output.');
-    return '
-<!DOCTYPE html>
+    $page = '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
-    <h1>Hello Heroku (via PHP index.php)</h1>
-</body>
-</html>
-';
+    <h1>Hello Heroku (via PHP index.php)</h1>';
+    //Test a query
+    $st = $app['pdo']->prepare('SELECT name FROM test_table');
+    $st->execute();
+
+    $names = array();
+    while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+        $app['monolog']->addDebug('Row ' . $row['name']);
+        $names[] = $row;
+    }
+
+    if(count($names) == 0) {
+        //No results of names
+        $page .= '\n    <p>No results found from query</p>';
+    }
+    else {
+        foreach($names as $n) {
+            $page .= "\n    <p>$n</p>";
+        }
+    }
+
+    $page .= '\n</body>\n</html>';
+    return $page;
     //return $app['twig']->render($str);  //Original return statement
 });
 
