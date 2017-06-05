@@ -34,7 +34,19 @@ $app->register(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider
 
 $app->get('/', function() use($app) {
     $app['monolog']->addDebug('logging output.');
-    return $app['twig']->render('index.php');
+    return '
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Hello Heroku (via PHP index.php)</h1>
+</body>
+</html>
+';
+    //return $app['twig']->render($str);  //Original return statement
 });
 
 $app->run();
