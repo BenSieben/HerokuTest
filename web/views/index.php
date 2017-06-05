@@ -1,3 +1,5 @@
+<?php
+echo('
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +7,9 @@
     <title></title>
 </head>
 <body>
-    <h1>Hello Heroku</h1>
+    <h1>Hello Heroku (via PHP index.php)</h1>
 </body>
 </html>
+');
+
+
