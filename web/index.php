@@ -41,7 +41,7 @@ $app->get('/', function() use($app) {
     <title></title>
 </head>
 <body>
-    <h1>Hello Heroku (via PHP index.php)</h1>';
+    <h1>Hello Heroku</h1>';
     //Test a query
     $st = $app['pdo']->prepare('SELECT name FROM test_table');
     $st->execute();
@@ -64,6 +64,7 @@ $app->get('/', function() use($app) {
     }
 
     $page .= "\n</body>\n</html>";
+    echo "<!-- Does echo show up? -->";
     return $page;
     //return $app['twig']->render($str);  //Original return statement
 });
