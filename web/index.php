@@ -38,7 +38,8 @@ $app->get('/', function() use($app) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Heroku Test B</title>
+    <link rel="icon" href="./favicon.ico" />
 </head>
 <body>
     <h1>Hello Heroku</h1>';
