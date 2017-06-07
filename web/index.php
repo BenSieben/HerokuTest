@@ -46,7 +46,7 @@ $app->get('/', function() use($app) {
 <body>
     <h1>Hello Heroku</h1>';
     //Test a query
-    $st = $app['pdo']->prepare('SELECT name FROM test_table');
+    $st = $app['pdo']->prepare('SELECT name FROM test_table;');
     $st->execute();
 
     $names = array();
@@ -71,6 +71,7 @@ $app->get('/', function() use($app) {
     $str .= "<br /><p><a href=\"" . APP_URL . "/dbinsert\">Insert a new name into the test_table</a></p>";
 
     $str .= "\n</body>\n</html>";
+    $st->close();
     //return "<!-- end -->";
     return $str;
     //return $app['twig']->render($str);  //Original return statement
@@ -78,10 +79,10 @@ $app->get('/', function() use($app) {
 
 //Web handler to try and reset the test_table
 $app->get('/dbreset/', function() use($app) {
-    $query = "DROP TABLE IF EXISTS test_table
-CREATE TABLE test_table(name TEXT)";
+    $query = "DROP TABLE IF EXISTS test_table; CREATE TABLE test_table(name TEXT);";
     $st = $app['pdo']->prepare($query);
     $st->execute();
+    $result = $st->get_result();
     $str ='<html>
 <head>
     <meta charset="UTF-8" />
@@ -90,9 +91,13 @@ CREATE TABLE test_table(name TEXT)";
 </head>
 <body>
     <h2>test_table has been reset</h2>
-    <p><a href="' . APP_URL . '">Go back to main page</a></p>
-</body>
+    <p><a href="' . APP_URL . '">Go back to main page</a></p>';
+    if(!$result) {
+        $str .= "    <br /><p>test_table reset failed</p>\n";
+    }
+    $str .= '</body>
 </html>';
+    $st->close();
     return $str;
 });
 
@@ -102,6 +107,7 @@ $app->get('/dbinsert/', function() use($app) {
     $query = "INSERT INTO test_table VALUES ($insert_name)";
     $st = $app['pdo']->prepare($query);
     $st->execute();
+    $result = $st->get_result();
     $str = '<html>
 <head>
     <meta charset="UTF-8" />
@@ -110,9 +116,13 @@ $app->get('/dbinsert/', function() use($app) {
 </head>
 <body>
     <h2>test_table has added a new name value (' . $insert_name . ')</h2>
-    <p><a href="' . APP_URL . '">Go back to main page</a></p>
-</body>
+    <p><a href="' . APP_URL . '">Go back to main page</a></p>';
+    if(!$result) {
+        $str .= "    <br /><p>Insert failed (test_table might not exist)</p>\n";
+    }
+    $str .= '</body>
 </html>';
+    $st->close();
     return $str;
 });
 
