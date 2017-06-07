@@ -62,7 +62,9 @@ $app->get('/', function() use($app) {
     else {
         $str .= "<h3>Query results:</h3>";
         foreach($names as $n) {
-            $str .= "\n    <p>$n</p>";
+            foreach($n as $key => $value) {
+                $str .= "\n    <p>$key is $value</p>";
+            }
         }
     }
 
