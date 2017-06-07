@@ -67,15 +67,15 @@ $app->get('/', function() use($app) {
     }
 
     //Add some links to the other pages
-    echo "<br /><p><a href=\"<?= APP_URL ?>/dbreset\">Reset the test_table</a></p>\n";
-    echo "<br /><p><a href=\"<?= APP_URL ?>/dbinsert\">Insert a new name into the test_table</a></p>";
+    echo "<br /><p><a href=\"" . APP_URL . "/dbreset\">Reset the test_table</a></p>\n";
+    echo "<br /><p><a href=\"" . APP_URL . "/dbinsert\">Insert a new name into the test_table</a></p>";
 
     echo "\n</body>\n</html>";
 ?>
 <!-- Escaping PHP code comment -->
 
 <?php
-    return "";
+    return "<!-- end -->";
     //return $app['twig']->render($str);  //Original return statement
 });
 
@@ -99,7 +99,7 @@ CREATE TABLE test_table(name TEXT)";
 </body>
 </html>
 <?php
-    return "";
+    return "<!-- end -->";
 });
 
 //Web handler to try and add a name to the test_table
@@ -121,7 +121,7 @@ $app->get('/dbinsert', function() use($app) {
 </body>
 </html>
     <?php
-    return "";
+    return "<!-- end -->";
 });
 
 $app->run();
