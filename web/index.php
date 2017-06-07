@@ -66,8 +66,8 @@ $app->get('/', function() use($app) {
     }
 
     //Add some links to the other pages
-    echo "<p><a href=\"<?= APP_URL ?>/dbreset\">Reset the test_table</a></p>";
-    echo "<p><a href=\"<?= APP_URL ?>/dbinsert\">Reset the test_table</a></p>";
+    echo "<br /><p><a href=\"<?= APP_URL ?>/dbreset\">Reset the test_table</a></p>\n";
+    echo "<br /><p><a href=\"<?= APP_URL ?>/dbinsert\">Reset the test_table</a></p>";
 
     $page .= "\n</body>\n</html>";
     echo "<!-- Echo does show up in output of app -->\n";
