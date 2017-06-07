@@ -31,6 +31,7 @@ $app->register(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider
 );
 
 // Our web handlers
+const APP_URL = "https://heroku-test-b.herokuapp.com";  // URL to the app
 
 $app->get('/', function() use($app) {
     $app['monolog']->addDebug('logging output.');
@@ -64,6 +65,10 @@ $app->get('/', function() use($app) {
         }
     }
 
+    //Add some links to the other pages
+    echo "<p><a href=\"<?= APP_URL ?>/dbreset\">Reset the test_table</a></p>";
+    echo "<p><a href=\"<?= APP_URL ?>/dbinsert\">Reset the test_table</a></p>";
+
     $page .= "\n</body>\n</html>";
     echo "<!-- Echo does show up in output of app -->\n";
 ?>
@@ -80,6 +85,7 @@ $app->get('/dbreset', function() use($app) {
 CREATE TABLE test_table(name TEXT)";
     $st = $app['pdo']->prepare($query);
     $st->execute();
+
 ?>
 <html>
 <head>
@@ -89,6 +95,7 @@ CREATE TABLE test_table(name TEXT)";
 </head>
 <body>
     <h2>test_table has been reset</h2>
+    <p><a href="<?= APP_URL ?>">Go back to main page</a></p>
 </body>
 </html>
 <?php
@@ -109,6 +116,7 @@ $app->get('/dbinsert', function() use($app) {
 </head>
 <body>
     <h2>test_table has added a new name value (<?= $insert_name ?>)</h2>
+    <p><a href="<?= APP_URL ?>">Go back to main page</a></p>
 </body>
 </html>
     <?php
