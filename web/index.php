@@ -71,10 +71,6 @@ $app->get('/', function() use($app) {
     $str .= "<br /><p><a href=\"" . APP_URL . "/dbinsert\">Insert a new name into the test_table</a></p>";
 
     $str .= "\n</body>\n</html>";
-?>
-<!-- Escaping PHP code comment -->
-
-<?php
     //return "<!-- end -->";
     return $str;
     //return $app['twig']->render($str);  //Original return statement
