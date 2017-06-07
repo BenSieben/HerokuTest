@@ -35,7 +35,8 @@ const APP_URL = "https://heroku-test-b.herokuapp.com";  // URL to the app
 
 $app->get('/', function() use($app) {
     $app['monolog']->addDebug('logging output.');
-    $page = '<!DOCTYPE html>
+    echo "<!-- Echo does show up in output of app -->\n";
+    echo '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -56,26 +57,25 @@ $app->get('/', function() use($app) {
 
     if(count($names) == 0) {
         //No results of names
-        $page .= "\n    <p>No results found from query</p>";
+        echo "\n    <p>No results found from query</p>";
     }
     else {
-        $page .= "<h3>Query results:</h3>";
+        echo "<h3>Query results:</h3>";
         foreach($names as $n) {
-            $page .= "\n    <p>$n</p>";
+            echo "\n    <p>$n</p>";
         }
     }
 
     //Add some links to the other pages
     echo "<br /><p><a href=\"<?= APP_URL ?>/dbreset\">Reset the test_table</a></p>\n";
-    echo "<br /><p><a href=\"<?= APP_URL ?>/dbinsert\">Reset the test_table</a></p>";
+    echo "<br /><p><a href=\"<?= APP_URL ?>/dbinsert\">Insert a new name into the test_table</a></p>";
 
-    $page .= "\n</body>\n</html>";
-    echo "<!-- Echo does show up in output of app -->\n";
+    echo "\n</body>\n</html>";
 ?>
 <!-- Escaping PHP code comment -->
 
 <?php
-    return $page;
+    // Trying out no return statement
     //return $app['twig']->render($str);  //Original return statement
 });
 
