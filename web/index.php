@@ -45,6 +45,11 @@ $app->get('/', function() use($app) {
 </head>
 <body>
     <h1>Hello Heroku</h1>';
+
+    //Add some links to the other pages
+    $str .= "\n<p><a href=\"" . APP_URL . "/dbreset\">Reset the test_table</a></p>";
+    $str .= "\n<p><a href=\"" . APP_URL . "/dbinsert\">Insert a new name into the test_table</a></p>";
+
     //Test a query
     $st = $app['pdo']->prepare('SELECT name FROM test_table;');
     $st->execute();
@@ -68,10 +73,6 @@ $app->get('/', function() use($app) {
         }
         $str .= "\n    </tbody></table>";
     }
-
-    //Add some links to the other pages
-    $str .= "\n<p><a href=\"" . APP_URL . "/dbreset\">Reset the test_table</a></p>";
-    $str .= "\n<p><a href=\"" . APP_URL . "/dbinsert\">Insert a new name into the test_table</a></p>";
 
     $str .= "\n</body>\n</html>";
     return $str;
