@@ -75,7 +75,7 @@ $app->get('/', function() use($app) {
 <!-- Escaping PHP code comment -->
 
 <?php
-    return null;
+    return "";
     //return $app['twig']->render($str);  //Original return statement
 });
 
@@ -99,7 +99,7 @@ CREATE TABLE test_table(name TEXT)";
 </body>
 </html>
 <?php
-    return null;
+    return "";
 });
 
 //Web handler to try and add a name to the test_table
@@ -121,7 +121,7 @@ $app->get('/dbinsert', function() use($app) {
 </body>
 </html>
     <?php
-    return null;
+    return "";
 });
 
 $app->run();
