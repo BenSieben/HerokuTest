@@ -76,7 +76,8 @@ $app->get('/', function() use($app) {
 
 <?php
     //return "<!-- end -->";
-    return $app['twig']->render($str);  //Original return statement
+    return $str;
+    //return $app['twig']->render($str);  //Original return statement
 });
 
 //Web handler to try and reset the test_table
@@ -96,7 +97,7 @@ CREATE TABLE test_table(name TEXT)";
     <p><a href="' . APP_URL . '">Go back to main page</a></p>
 </body>
 </html>';
-    return $app['twig']->render($str);
+    return $str;
 });
 
 //Web handler to try and add a name to the test_table
@@ -116,7 +117,7 @@ $app->get('/dbinsert/', function() use($app) {
     <p><a href="' . APP_URL . '">Go back to main page</a></p>
 </body>
 </html>';
-    return $app['twig']->render($str);
+    return $str;
 });
 
 $app->run();
