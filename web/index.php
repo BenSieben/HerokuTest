@@ -65,7 +65,11 @@ $app->get('/', function() use($app) {
     }
 
     $page .= "\n</body>\n</html>";
-    echo "<!-- Does echo show up? -->";
+    echo "<!-- Echo does show up in output of app -->\n";
+?>
+<!-- Escaping PHP code comment -->
+
+<?php
     return $page;
     //return $app['twig']->render($str);  //Original return statement
 });
