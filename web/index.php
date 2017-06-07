@@ -80,7 +80,7 @@ $app->get('/', function() use($app) {
 });
 
 //Web handler to try and reset the test_table
-$app->get('/dbreset', function() use($app) {
+$app->get('/dbreset/', function() use($app) {
     $query = "DROP TABLE IF EXISTS test_table
 CREATE TABLE test_table(name TEXT)";
     $st = $app['pdo']->prepare($query);
@@ -100,7 +100,7 @@ CREATE TABLE test_table(name TEXT)";
 });
 
 //Web handler to try and add a name to the test_table
-$app->get('/dbinsert', function() use($app) {
+$app->get('/dbinsert/', function() use($app) {
     $insert_name = "name" . strval(rand(0, 1000));
     $query = "INSERT INTO test_table VALUES ($insert_name)";
     $st = $app['pdo']->prepare($query);
@@ -121,4 +121,3 @@ $app->get('/dbinsert', function() use($app) {
 
 $app->run();
 
-?>
