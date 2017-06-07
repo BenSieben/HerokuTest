@@ -73,18 +73,22 @@ $app->get('/', function() use($app) {
     $str .= "<br /><p><a href=\"" . APP_URL . "/dbinsert\">Insert a new name into the test_table</a></p>";
 
     $str .= "\n</body>\n</html>";
-    //$st->close();
-    //return "<!-- end -->";
     return $str;
     //return $app['twig']->render($str);  //Original return statement
 });
 
 //Web handler to try and reset the test_table
 $app->get('/dbreset/', function() use($app) {
-    $query = "DROP TABLE IF EXISTS test_table; CREATE TABLE test_table(name TEXT);";
+    // Query 1: remove test_table if it already exists
+    $query = "DROP TABLE IF EXISTS test_table;";
     $st = $app['pdo']->prepare($query);
     $st->execute();
-    //$result = $st->get_result();
+
+    //Query 2: create test_table
+    $query = "CREATE TABLE test_table(name TEXT);";
+    $st = $app['pdo']->prepare($query);
+    $st->execute();
+
     $str ='<html>
 <head>
     <meta charset="UTF-8" />
@@ -94,9 +98,6 @@ $app->get('/dbreset/', function() use($app) {
 <body>
     <h2>test_table has been reset</h2>
     <p><a href="' . APP_URL . '">Go back to main page</a></p>';
-    /*if(!$result) {
-        $str .= "    <br /><p>test_table reset failed</p>\n";
-    }*/
     $str .= '</body>
 </html>';
     //$st->close();
@@ -109,7 +110,6 @@ $app->get('/dbinsert/', function() use($app) {
     $query = "INSERT INTO test_table VALUES ('$insert_name')";
     $st = $app['pdo']->prepare($query);
     $st->execute();
-    //$result = $st->get_result();
     $str = '<html>
 <head>
     <meta charset="UTF-8" />
@@ -119,9 +119,6 @@ $app->get('/dbinsert/', function() use($app) {
 <body>
     <h2>test_table has added a new name value (' . $insert_name . ')</h2>
     <p><a href="' . APP_URL . '">Go back to main page</a></p>';
-    /*if(!$result) {
-        $str .= "    <br /><p>Insert failed (test_table might not exist)</p>\n";
-    }*/
     $str .= '</body>
 </html>';
     //$st->close();
