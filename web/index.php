@@ -57,20 +57,21 @@ $app->get('/', function() use($app) {
 
     if(count($names) == 0) {
         //No results of names
-        $str .= "\n    <p>No results found from query</p>";
+        $str .= "\n    <p>No results found from query on the test_table</p>";
     }
     else {
-        $str .= "<h3>Query results:</h3>";
+        $str .= "\n    <h3>Query results:</h3>";
+        $str .= "\n    <table><thead><tr><th>Name</th></tr></thead><tbody>";
         foreach($names as $n) {
-            foreach($n as $key => $value) {
-                $str .= "\n    <p>$key is $value</p>";
-            }
+            // Access the name attribute value of each $n (each row returned by query)
+            $str .= "\n    <tr><td>" . htmlspecialchars($n["name"]) . "</td></tr>";
         }
+        $str .= "\n    </tbody></table>";
     }
 
     //Add some links to the other pages
-    $str .= "\n<br /><p><a href=\"" . APP_URL . "/dbreset\">Reset the test_table</a></p>\n";
-    $str .= "<br /><p><a href=\"" . APP_URL . "/dbinsert\">Insert a new name into the test_table</a></p>";
+    $str .= "\n<p><a href=\"" . APP_URL . "/dbreset\">Reset the test_table</a></p>";
+    $str .= "\n<p><a href=\"" . APP_URL . "/dbinsert\">Insert a new name into the test_table</a></p>";
 
     $str .= "\n</body>\n</html>";
     return $str;
