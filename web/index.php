@@ -82,7 +82,7 @@ $app->get('/dbreset/', function() use($app) {
     $query = "DROP TABLE IF EXISTS test_table; CREATE TABLE test_table(name TEXT);";
     $st = $app['pdo']->prepare($query);
     $st->execute();
-    $result = $st->get_result();
+    //$result = $st->get_result();
     $str ='<html>
 <head>
     <meta charset="UTF-8" />
@@ -92,12 +92,12 @@ $app->get('/dbreset/', function() use($app) {
 <body>
     <h2>test_table has been reset</h2>
     <p><a href="' . APP_URL . '">Go back to main page</a></p>';
-    if(!$result) {
+    /*if(!$result) {
         $str .= "    <br /><p>test_table reset failed</p>\n";
-    }
+    }*/
     $str .= '</body>
 </html>';
-    $st->close();
+    //$st->close();
     return $str;
 });
 
@@ -107,7 +107,7 @@ $app->get('/dbinsert/', function() use($app) {
     $query = "INSERT INTO test_table VALUES ($insert_name)";
     $st = $app['pdo']->prepare($query);
     $st->execute();
-    $result = $st->get_result();
+    //$result = $st->get_result();
     $str = '<html>
 <head>
     <meta charset="UTF-8" />
@@ -117,12 +117,12 @@ $app->get('/dbinsert/', function() use($app) {
 <body>
     <h2>test_table has added a new name value (' . $insert_name . ')</h2>
     <p><a href="' . APP_URL . '">Go back to main page</a></p>';
-    if(!$result) {
+    /*if(!$result) {
         $str .= "    <br /><p>Insert failed (test_table might not exist)</p>\n";
-    }
+    }*/
     $str .= '</body>
 </html>';
-    $st->close();
+    //$st->close();
     return $str;
 });
 
