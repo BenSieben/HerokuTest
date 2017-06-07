@@ -104,7 +104,7 @@ $app->get('/dbreset/', function() use($app) {
 //Web handler to try and add a name to the test_table
 $app->get('/dbinsert/', function() use($app) {
     $insert_name = "name" . strval(rand(0, 1000));
-    $query = "INSERT INTO test_table VALUES ($insert_name)";
+    $query = "INSERT INTO test_table VALUES ('$insert_name')";
     $st = $app['pdo']->prepare($query);
     $st->execute();
     //$result = $st->get_result();
