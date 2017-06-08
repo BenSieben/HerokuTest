@@ -10,14 +10,14 @@ body {
     text-align: center;
     font-family: sans-serif;
     background: #333333; /* dark gray */
-    color: #FF6600; /* orange */
+    color: #85EEFC; /* light blue */
 }
 
 /*
 anchors have new color scheme to match rest of the website
 */
 a {
-    color: #FF944D; /* light orange */
+    color: #C2F5FC; /* light light blue */
 }
 
 /*
@@ -47,5 +47,5 @@ table {
 include border on table and table contents
 */
 table, td, th {
-    border: 1px solid #FF6600; /* orange border */
+    border: 1px solid #85EEFC; /* light blue border */
 }
