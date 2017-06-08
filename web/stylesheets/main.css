@@ -1,0 +1,28 @@
+/***
+General stylesheet for all
+web pages in the website
+*/
+
+/*
+all body elements have centered text in sans-serif font
+*/
+body {
+    text-align: center;
+    font-family: sans-serif;
+    background: #333333; /* dark gray */
+    color: #FF6600; /* orange */
+}
+
+/*
+anchors have new color scheme to match rest of the website
+*/
+a {
+    color: #FF944D; /* light orange */
+}
+
+/*
+anchors switch their color when hovered over
+*/
+a:hover {
+    color: #FFFFFF; /* white */
+}

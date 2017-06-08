@@ -42,6 +42,7 @@ $app->get('/', function() use($app) {
     <meta charset="UTF-8">
     <title>Heroku Test B</title>
     <link rel="icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main.css" />
 </head>
 <body>
     <h1>Hello Heroku</h1>';
@@ -96,6 +97,7 @@ $app->get('/dbreset/', function() use($app) {
     <meta charset="UTF-8" />
     <title>Heroku Test B - Reset test_table</title>
     <link rel="icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main.css" />
 </head>
 <body>
     <h2>test_table has been reset</h2>
@@ -117,6 +119,7 @@ $app->get('/dbinsert/', function() use($app) {
     <meta charset="UTF-8" />
     <title>Heroku Test B - Insert Into test_table</title>
     <link rel="icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main.css" />
 </head>
 <body>
     <h2>test_table has added a new name value (' . $insert_name . ')</h2>
