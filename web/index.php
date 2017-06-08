@@ -92,7 +92,8 @@ $app->get('/dbreset/', function() use($app) {
     $st = $app['pdo']->prepare($query);
     $st->execute();
 
-    $str ='<html>
+    $str ='<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Heroku Test B - Reset test_table</title>
@@ -114,7 +115,8 @@ $app->get('/dbinsert/', function() use($app) {
     $query = "INSERT INTO test_table VALUES ('$insert_name')";
     $st = $app['pdo']->prepare($query);
     $st->execute();
-    $str = '<html>
+    $str = '<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Heroku Test B - Insert Into test_table</title>
