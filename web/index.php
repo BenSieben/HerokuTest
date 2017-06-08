@@ -67,7 +67,7 @@ $app->get('/', function() use($app) {
     }
     else {
         $str .= "\n    <h3>Query results:</h3>";
-        $str .= "\n    <table><thead><tr><th>Name</th></tr></thead><tbody>";
+        $str .= "\n    <table class=\"center\"><thead><tr><th>Name</th></tr></thead><tbody>";
         foreach($names as $n) {
             // Access the name attribute value of each $n (each row returned by query)
             $str .= "\n    <tr><td>" . htmlspecialchars($n["name"]) . "</td></tr>";

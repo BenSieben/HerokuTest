@@ -26,3 +26,26 @@ anchors switch their color when hovered over
 a:hover {
     color: #FFFFFF; /* white */
 }
+
+/*
+tables with center class are centered
+*/
+table.center {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+/*
+collapse border on table
+*/
+table {
+    border-collapse: collapse;
+}
+
+/*
+include border on table and table contents
+*/
+table, td, th {
+    border: 1px solid #FF6600; /* orange border */
+}
