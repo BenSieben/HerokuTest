@@ -35,7 +35,7 @@ const APP_URL = "https://heroku-test-b.herokuapp.com";  // URL to the app
 
 $app->get('/', function() use($app) {
     $app['monolog']->addDebug('logging output.');
-    $str = "<!-- Echo does show up in output of app -->\n";
+    $str = "<!-- Echo does show up in output of app\nDatabase URL is " . getenv('DATABASE_URL') . " -->\n";
     $str .= '<!DOCTYPE html>
 <html lang="en">
 <head>
